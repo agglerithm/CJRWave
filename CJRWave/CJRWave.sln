@@ -5,9 +5,9 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CJRWave", "CJRWave\CJRWave.csproj", "{9604AF2F-83CB-477B-9A49-D6F16B91237D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferUtilities", "..\..\BufferUtilities\BufferUtilities.csproj", "{D10FED36-7FBA-48B4-9C3F-305680AC25AE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sound.Core", "Sound.Core\Sound.Core.csproj", "{1486C2F0-4C8B-4511-A7F2-CC9501D3BC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferUtilities", "..\..\BufferUtilities\BufferUtilities.csproj", "{D10FED36-7FBA-48B4-9C3F-305680AC25AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

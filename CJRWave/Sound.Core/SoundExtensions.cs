@@ -1,9 +1,10 @@
-﻿namespace Sound.Core
+﻿using NAudio.Wave;
+
+namespace Sound.Core
 {
     public static class SoundExtensions
     {
         private const double PI = 3.14159;
-
         private static double GetSine(this double timeElapsed, double frequency)
         {
             return Math.Sin(frequency.AngularVelocity() * timeElapsed);

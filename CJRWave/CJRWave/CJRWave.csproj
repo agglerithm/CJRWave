@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BufferUtilities\BufferUtilities.csproj" />
+    <ProjectReference Include="..\..\..\BufferUtilities\BufferUtilities\BufferUtilities.csproj" />
   </ItemGroup>
 
 </Project>

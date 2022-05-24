@@ -1,0 +1,15 @@
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\CJRWave.deps.json
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\CJRWave.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\CJRWave.pdb
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\BufferUtilities.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\BufferUtilities.pdb
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.csproj.AssemblyReference.cache
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.AssemblyInfoInputs.cache
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.AssemblyInfo.cs
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.csproj.CoreCompileInputs.cache
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.csproj.CopyComplete
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\refint\CJRWave.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.pdb
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\ref\CJRWave.dll
