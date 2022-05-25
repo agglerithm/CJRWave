@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using NAudio.WaveFormRenderer;
 
 namespace Sound.Core
 {

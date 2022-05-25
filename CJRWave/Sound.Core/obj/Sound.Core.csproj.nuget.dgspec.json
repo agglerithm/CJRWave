@@ -42,12 +42,17 @@
           "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.Windows.CsWin32": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[0.1.691-beta, )"
             },
             "NAudio": {
               "target": "Package",
               "version": "[2.1.0, )"
+            },
+            "NAudio.WaveFormRenderer": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
