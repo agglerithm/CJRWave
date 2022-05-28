@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ccc7993_002Df297_002D4908_002Db45c_002Dae43012473aa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanReferenceAndDereferenceStruct" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceStruct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceBuffer&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
