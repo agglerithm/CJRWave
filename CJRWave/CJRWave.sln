@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sound.Core", "Sound.Core\So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferUtilities", "..\..\BufferUtilities\BufferUtilities.csproj", "{D10FED36-7FBA-48B4-9C3F-305680AC25AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferUtilities.Tests", "BufferUtilities.Tests\BufferUtilities.Tests.csproj", "{949F3F00-658F-4E37-BB3D-B7F1C6FF358C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1486C2F0-4C8B-4511-A7F2-CC9501D3BC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1486C2F0-4C8B-4511-A7F2-CC9501D3BC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1486C2F0-4C8B-4511-A7F2-CC9501D3BC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949F3F00-658F-4E37-BB3D-B7F1C6FF358C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949F3F00-658F-4E37-BB3D-B7F1C6FF358C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949F3F00-658F-4E37-BB3D-B7F1C6FF358C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949F3F00-658F-4E37-BB3D-B7F1C6FF358C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
