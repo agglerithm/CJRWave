@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Microsoft.NETCore.Platforms/5.0.0": {
+      "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -32,53 +32,6 @@
             "assetType": "runtime",
             "rid": "win"
           }
-        }
-      },
-      "Microsoft.Win32.SystemEvents/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "5.0.0"
-        },
-        "compile": {
-          "ref/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "Microsoft.Windows.CsWin32/0.1.691-beta": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Windows.SDK.Win32Docs": "0.1.7-alpha",
-          "Microsoft.Windows.SDK.Win32Metadata": "23.0.2-preview",
-          "System.Memory": "4.5.4"
-        },
-        "build": {
-          "build/netstandard1.0/Microsoft.Windows.CsWin32.props": {}
-        }
-      },
-      "Microsoft.Windows.SDK.Win32Docs/0.1.7-alpha": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/_._": {}
-        },
-        "build": {
-          "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Docs.props": {}
-        }
-      },
-      "Microsoft.Windows.SDK.Win32Metadata/23.0.2-preview": {
-        "type": "package",
-        "build": {
-          "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props": {}
         }
       },
       "NAudio/2.1.0": {
@@ -143,19 +96,6 @@
           "lib/netstandard2.0/NAudio.Wasapi.dll": {}
         }
       },
-      "NAudio.WaveFormRenderer/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "NAudio.Core": "2.0.0",
-          "System.Drawing.Common": "5.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/NAudio.WaveFormRenderer.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/NAudio.WaveFormRenderer.dll": {}
-        }
-      },
       "NAudio.WinMM/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -167,37 +107,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/NAudio.WinMM.dll": {}
-        }
-      },
-      "System.Drawing.Common/5.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Win32.SystemEvents": "5.0.0"
-        },
-        "compile": {
-          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/System.Drawing.Common.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Memory/4.5.4": {
-        "type": "package",
-        "compile": {
-          "ref/netcoreapp2.1/_._": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/_._": {}
         }
       },
       "System.Security.AccessControl/4.7.0": {
@@ -237,22 +146,30 @@
             "rid": "win"
           }
         }
+      },
+      "BufferUtilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/BufferUtilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BufferUtilities.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Microsoft.NETCore.Platforms/5.0.0": {
-      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+    "Microsoft.NETCore.Platforms/3.1.0": {
+      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/5.0.0",
+      "path": "microsoft.netcore.platforms/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -304,104 +221,6 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "Microsoft.Win32.SystemEvents/5.0.0": {
-      "sha512": "Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
-      "type": "package",
-      "path": "microsoft.win32.systemevents/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Win32.SystemEvents.dll",
-        "lib/net461/Microsoft.Win32.SystemEvents.xml",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.5.0.0.nupkg.sha512",
-        "microsoft.win32.systemevents.nuspec",
-        "ref/net461/Microsoft.Win32.SystemEvents.dll",
-        "ref/net461/Microsoft.Win32.SystemEvents.xml",
-        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
-        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.xml",
-        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll",
-        "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.xml",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "Microsoft.Windows.CsWin32/0.1.691-beta": {
-      "sha512": "t7XyOwz+CBPA+2i4foHiLpGxDgvO5h1OTX7NYxWJxQZYFqJTYX96bwAmyuYwCy7gh1o+kZSZWqjdzZsu8RAolA==",
-      "type": "package",
-      "path": "microsoft.windows.cswin32/0.1.691-beta",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NOTICE.txt",
-        "README.md",
-        "analyzers/cs/MessagePack.Annotations.dll",
-        "analyzers/cs/MessagePack.dll",
-        "analyzers/cs/Microsoft.Bcl.AsyncInterfaces.dll",
-        "analyzers/cs/Microsoft.Windows.CsWin32.dll",
-        "analyzers/cs/Microsoft.Windows.SDK.Win32Docs.dll",
-        "analyzers/cs/System.Buffers.dll",
-        "analyzers/cs/System.Memory.dll",
-        "analyzers/cs/System.Numerics.Vectors.dll",
-        "analyzers/cs/System.Runtime.CompilerServices.Unsafe.dll",
-        "analyzers/cs/System.Text.Encodings.Web.dll",
-        "analyzers/cs/System.Text.Json.dll",
-        "analyzers/cs/System.Threading.Tasks.Extensions.dll",
-        "build/Microsoft.Windows.CsWin32.props",
-        "build/net20/Microsoft.Windows.CsWin32.props",
-        "build/netstandard1.0/Microsoft.Windows.CsWin32.props",
-        "microsoft.windows.cswin32.0.1.691-beta.nupkg.sha512",
-        "microsoft.windows.cswin32.nuspec",
-        "readme.txt",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    },
-    "Microsoft.Windows.SDK.Win32Docs/0.1.7-alpha": {
-      "sha512": "+8ygOfBME88Sq75zMopFfqCdxBxZoKDlizPK6iYxzSGf6j51rd9ISNJ20UKfOSr746tgn9GNyVI+jc0JXfnuZA==",
-      "type": "package",
-      "path": "microsoft.windows.sdk.win32docs/0.1.7-alpha",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "apidocs.msgpack",
-        "buildTransitive/Microsoft.Windows.SDK.Win32Docs.props",
-        "buildTransitive/net20/Microsoft.Windows.SDK.Win32Docs.props",
-        "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Docs.props",
-        "images/windows.png",
-        "lib/netstandard2.0/Microsoft.Windows.SDK.Win32Docs.dll",
-        "lib/netstandard2.0/Microsoft.Windows.SDK.Win32Docs.xml",
-        "microsoft.windows.sdk.win32docs.0.1.7-alpha.nupkg.sha512",
-        "microsoft.windows.sdk.win32docs.nuspec"
-      ]
-    },
-    "Microsoft.Windows.SDK.Win32Metadata/23.0.2-preview": {
-      "sha512": "ayRPARDzJgvebolzpb2/BJRlt2ytgrVitPoGKdAFa9JTVChs+uS2XncMyj5+4rxMu6a2FSfUjpiLFLT8m8Lr4A==",
-      "type": "package",
-      "path": "microsoft.windows.sdk.win32metadata/23.0.2-preview",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Windows.Win32.Interop.dll",
-        "Windows.Win32.winmd",
-        "build/Microsoft.Windows.SDK.Win32Metadata.props",
-        "build/net20/Microsoft.Windows.SDK.Win32Metadata.props",
-        "build/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props",
-        "buildTransitive/Microsoft.Windows.SDK.Win32Metadata.props",
-        "buildTransitive/net20/Microsoft.Windows.SDK.Win32Metadata.props",
-        "buildTransitive/netstandard1.0/Microsoft.Windows.SDK.Win32Metadata.props",
-        "images/windows.png",
-        "microsoft.windows.sdk.win32metadata.23.0.2-preview.nupkg.sha512",
-        "microsoft.windows.sdk.win32metadata.nuspec"
       ]
     },
     "NAudio/2.1.0": {
@@ -479,19 +298,6 @@
         "naudio.wasapi.nuspec"
       ]
     },
-    "NAudio.WaveFormRenderer/2.0.0": {
-      "sha512": "OntjxB9eZA9JlIO09oiN+IAM/DnKBR7/PAVVy+/8h6tSuQm/Cr2En5VufZ49ATfL+9B8BGsGaeDeDRT2brWiDw==",
-      "type": "package",
-      "path": "naudio.waveformrenderer/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/NAudio.WaveFormRenderer.dll",
-        "lib/netstandard2.0/NAudio.WaveFormRenderer.xml",
-        "naudio.waveformrenderer.2.0.0.nupkg.sha512",
-        "naudio.waveformrenderer.nuspec"
-      ]
-    },
     "NAudio.WinMM/2.1.0": {
       "sha512": "lUU5C+XNzKhFUIEafA/nJpbtjksFtbUd033fs27KeHlOM0r6rQFF3l75dqxg+rWkGu81MfkBbYrNpH9p8qmtBA==",
       "type": "package",
@@ -503,71 +309,6 @@
         "naudio-icon.png",
         "naudio.winmm.2.1.0.nupkg.sha512",
         "naudio.winmm.nuspec"
-      ]
-    },
-    "System.Drawing.Common/5.0.1": {
-      "sha512": "3IN8zWk395Qu+7wnoTbebEjdP3izZBBKAahgWuC0jp9tCgTdUFN6KsrqQl0I3L+ptZD/LvwKjgFp1u+x3+p+DA==",
-      "type": "package",
-      "path": "system.drawing.common/5.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net461/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "lib/netstandard2.0/System.Drawing.Common.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net461/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.dll",
-        "ref/netcoreapp3.0/System.Drawing.Common.xml",
-        "ref/netstandard2.0/System.Drawing.Common.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
-        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "system.drawing.common.5.0.1.nupkg.sha512",
-        "system.drawing.common.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "System.Memory/4.5.4": {
-      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
-      "type": "package",
-      "path": "system.memory/4.5.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Memory.dll",
-        "lib/net461/System.Memory.xml",
-        "lib/netcoreapp2.1/_._",
-        "lib/netstandard1.1/System.Memory.dll",
-        "lib/netstandard1.1/System.Memory.xml",
-        "lib/netstandard2.0/System.Memory.dll",
-        "lib/netstandard2.0/System.Memory.xml",
-        "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.4.nupkg.sha512",
-        "system.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
       ]
     },
     "System.Security.AccessControl/4.7.0": {
@@ -669,13 +410,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BufferUtilities/1.0.0": {
+      "type": "project",
+      "path": "../../../BufferUtilities/BufferUtilities.csproj",
+      "msbuildProject": "../../../BufferUtilities/BufferUtilities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.Windows.CsWin32 >= 0.1.691-beta",
-      "NAudio >= 2.1.0",
-      "NAudio.WaveFormRenderer >= 2.0.0"
+      "BufferUtilities >= 1.0.0",
+      "NAudio >= 2.1.0"
     ]
   },
   "packageFolders": {
@@ -706,7 +451,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
+              "projectPath": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -719,18 +468,9 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
-          "Microsoft.Windows.CsWin32": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[0.1.691-beta, )"
-          },
           "NAudio": {
             "target": "Package",
             "version": "[2.1.0, )"
-          },
-          "NAudio.WaveFormRenderer": {
-            "target": "Package",
-            "version": "[2.0.0, )"
           }
         },
         "imports": [

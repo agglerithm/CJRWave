@@ -10,3 +10,6 @@ C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\obj\Debug\net6.0\Sound
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\obj\Debug\net6.0\refint\Sound.Core.dll
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\obj\Debug\net6.0\Sound.Core.pdb
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\obj\Debug\net6.0\ref\Sound.Core.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\bin\Debug\net6.0\BufferUtilities.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\bin\Debug\net6.0\BufferUtilities.pdb
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\Sound.Core\obj\Debug\net6.0\Sound.Core.csproj.CopyComplete

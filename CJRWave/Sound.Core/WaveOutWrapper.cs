@@ -1,77 +1,57 @@
 using System.Runtime.InteropServices;
-using Windows.Win32.Media.Audio;
 using BufferUtilities;
 using NAudio;
 using NAudio.Wave;
+using Sound.Core.Models;
 
 namespace Sound.Core;
 
-public class WaveOutWrapper
+public struct WaveOutWrapper
 {
-    private IntPtr _deviceId;
-    private WaveFormat _lpFormat;
-    private IntPtr _dwInstance;
-    private WaveInterop.WaveInOutOpenFlags _flags;
     private IntPtr _currentWaveOutHandle;
-    private WaveHeader _lpWaveOutHdr;
-    private  List<WaveOutCapabilities> _devices = new List<WaveOutCapabilities>();
 
     public WaveOutWrapper()
     {
-        _deviceId = new IntPtr();
-        _dwInstance = new IntPtr();
-        var deviceCount = WaveInterop.waveOutGetNumDevs();
-        for (int i = 0; i < deviceCount; i++)
-        {
-            var wavCap = default(WaveOutCapabilities);
-            WaveInterop.waveOutGetDevCaps(_deviceId, out wavCap, typeof(WaveOutCapabilities).SizeOf());
-        }
+        _currentWaveOutHandle = MarshalExtensions.Allocate(MarshalExtensions.SizeOf<int>());
     }
-    public void Open()
+    public void Open(FormatRequest format)
     {
-        WaveInterop.waveOutOpen(out var _currentWaveOutHandle, _deviceId, _lpFormat, _callback, _dwInstance, _flags);
+        var deviceId = (IntPtr)0;
+        var dwInstance = this.PtrFromStruct();
+        Validate(WaveInterop.waveOutOpen(
+            out  _currentWaveOutHandle, 
+            deviceId, format.BuildWaveFormat(), _callback, dwInstance, format.Flags));
     }
 
-    public MmResult Close()
+    public void Close()
     {
-        return WaveInterop.waveOutClose(_currentWaveOutHandle);
+        var result = WaveInterop.waveOutClose(_currentWaveOutHandle);
+        Validate(result);
     }
 
     public void Write(WaveWriteRequest req)
     {
-        var hdr = new WaveHeader()
-        {
-            bufferLength = req.Data.Length,
-            flags = req.GetFlags()
-        };
-        var result = WaveInterop.waveOutWrite(_currentWaveOutHandle.DereferenceStruct<HWAVEOUT>(), hdr, 0);
+        var hdr = req.GetHeader();
+        var result = WaveInterop.waveOutWrite(
+            _currentWaveOutHandle, 
+            hdr, 0);
+        Validate(result);
+    }
+
+    private static void Validate(MmResult result)
+    {
         if (result != MmResult.NoError)
             throw new MmException(result);
     }
-
     private void _callback(IntPtr hwaveout, WaveInterop.WaveMessage message, IntPtr dwinstance, WaveHeader wavhdr, IntPtr dwreserved)
     {
-        throw new NotImplementedException();
-    }
-}
-
-public class WaveWriteRequest
-{
-    public byte[] Data { get; set; }
-    public bool Done { get; set; }
-    public bool Prepared { get; set; }
-    public bool BeginLoop { get; set; }
-    public bool EndLoop { get; set; }
-
-    public WaveHeaderFlags GetFlags()
-    {
-        throw new NotImplementedException();
+        Console.WriteLine("Opened!");
     }
 }
 
 public class MmException:Exception
 {
-    public MmException(MmResult result)
+    public MmException(MmResult result):base(result.ToString())
     {
         MultiMediaResult = result;
     }
