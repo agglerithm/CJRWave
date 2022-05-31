@@ -14,6 +14,7 @@ public class FormatRequest
 
     public WaveFormat BuildWaveFormat()
     {
-        return  new WaveFormat(SampleRate, BitsPerSample, Channels);
+        return  new WaveFormat(SampleRate, Channels);
     }
+    public WaveInterop.WaveCallback Callback { get; set; }
 }

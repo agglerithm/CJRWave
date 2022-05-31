@@ -20,9 +20,21 @@ public struct WaveOutWrapper
         var dwInstance = this.PtrFromStruct();
         Validate(WaveInterop.waveOutOpen(
             out  _currentWaveOutHandle, 
-            deviceId, format.BuildWaveFormat(), _callback, dwInstance, format.Flags));
+            deviceId, format.BuildWaveFormat(), format.Callback, dwInstance, format.Flags));
     }
 
+    public void PrepareHeader(WaveWriteRequest req)
+    {
+        var result = WaveInterop.waveOutPrepareHeader(_currentWaveOutHandle, 
+            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        Validate(result);
+    }
+    public void UnprepareHeader(WaveWriteRequest req)
+    {
+        var result = WaveInterop.waveOutUnprepareHeader(_currentWaveOutHandle, 
+            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        Validate(result);
+    }
     public void Close()
     {
         var result = WaveInterop.waveOutClose(_currentWaveOutHandle);
@@ -31,10 +43,9 @@ public struct WaveOutWrapper
 
     public void Write(WaveWriteRequest req)
     {
-        var hdr = req.GetHeader();
         var result = WaveInterop.waveOutWrite(
             _currentWaveOutHandle, 
-            hdr, 0);
+            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
         Validate(result);
     }
 
@@ -43,10 +54,7 @@ public struct WaveOutWrapper
         if (result != MmResult.NoError)
             throw new MmException(result);
     }
-    private void _callback(IntPtr hwaveout, WaveInterop.WaveMessage message, IntPtr dwinstance, WaveHeader wavhdr, IntPtr dwreserved)
-    {
-        Console.WriteLine("Opened!");
-    }
+
 }
 
 public class MmException:Exception

@@ -10,5 +10,7 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanGetDevices&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanOpenDevice&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanPrepareHeader&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanWriteToDevice&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
