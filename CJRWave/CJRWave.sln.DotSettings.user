@@ -4,13 +4,22 @@
     &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceStruct&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceBuffer&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanGetDevices&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b3e48568_002D2b4f_002D4e28_002D9c88_002Db5adf473cc1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanGetDevices" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b3e48568_002D2b4f_002D4e28_002D9c88_002Db5adf473cc1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanGetDevices" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanGetDevices&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanOpenDevice&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanPrepareHeader&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanWriteToDevice&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveFunctionTests.CanGetSineWave&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc0029ea_002Db766_002D4434_002D9da6_002Dfd90689b78d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanGetSineWave" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveFunctionTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

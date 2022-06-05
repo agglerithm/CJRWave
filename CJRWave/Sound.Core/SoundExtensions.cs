@@ -36,7 +36,7 @@ namespace Sound.Core
         }
         private static double AngularVelocity(this double frequency)
         {
-            return 2 * PI * frequency;
+            return 2.0 * PI * frequency;
         }
     }
 }
