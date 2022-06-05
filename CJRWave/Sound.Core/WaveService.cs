@@ -1,6 +1,6 @@
 using BufferUtilities;
-using NAudio.Wave;
 using Sound.Core.Models;
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
 
@@ -36,18 +36,17 @@ public class WaveService
     private uint _blockSamples;
     private uint _blockCurrent;
     private uint _blockFree;
-    private Action<object> _log;
     private Thread _thread;
-    private AutoResetEvent _resetEvent = new AutoResetEvent(false);
+    private AutoResetEvent _resetEvent = new(false);
     private WaveHeader[] _headers;
     private BufferBuilder _blocks;
     private readonly FormatRequest _format;
     private double _globalTime;
     private bool _ready = true;
     private Func<double, double> _userFunction;
-    public static FileStream Fs;
     WaveOutWrapper _wavStruct = new();
-    
+    private readonly Action<object> _log;
+
     public void Start()
     {
         _thread = new Thread(new ThreadStart(WaveTask))
@@ -69,9 +68,9 @@ public class WaveService
             return Math.Min(sample, max);
         return Math.Max(sample, -max);
     }
-    private void callback(IntPtr hwaveout, WaveInterop.WaveMessage message, IntPtr dwinstance, WaveHeader wavhdr, IntPtr dwreserved)
+    private void callback(IntPtr hwaveout, Wave.WaveMessage message, IntPtr dwinstance, WaveHeader wavhdr, IntPtr dwreserved)
     {
-        if (message != WaveInterop.WaveMessage.WaveOutDone) return;
+        if (message != Wave.WaveMessage.WaveOutDone) return;
 
         _blockFree++;
         _resetEvent.Set();
@@ -81,7 +80,7 @@ public class WaveService
         _wavStruct.Open(_format);
         _globalTime = 0.0;
         double timeStep = 1.0 / _sampleRate;
-        int maxSample = int.MaxValue;
+        short maxSample = short.MaxValue;
             while (_ready)
             {
                 var bb = new BufferBuilder();
@@ -89,15 +88,17 @@ public class WaveService
                     _resetEvent.WaitOne();
                 _blockFree--;
                 if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
-                    _wavStruct.UnprepareHeader(new WaveWriteRequest(){Flags=WaveHeaderFlags.Prepared});
+                    _wavStruct.UnprepareHeader(new WaveWriteRequest()
+                        {Flags=WaveHeaderFlags.Prepared});
                 int nextSample;
                 for (var i = 0; i < _blockSamples; i++)
                 {
                     var initialValue = _userFunction(_globalTime);
-                    _log(initialValue);
-                    nextSample = (int)(clipSample(initialValue, 1.0) * (float)maxSample);
-                    _log(nextSample);
+                    var clipped = clipSample(initialValue, 1);
+                    nextSample = (int)(clipped * (float)maxSample);
+                    LogValue(nextSample);
                     bb.Append(nextSample);
+                    _globalTime += timeStep;
                 }
 
                 _headers[_blockCurrent].userData = bb.ToByteArray().PtrFromByteArray();
@@ -108,40 +109,20 @@ public class WaveService
                 };
                 _wavStruct.PrepareHeader(request);
                 _wavStruct.Write(request);
-                _globalTime += timeStep;
                 _blockCurrent++;
                 _blockCurrent %= _blockCount;
             }
+    }
 
+    private void LogValue(object obj)
+    {
+        if (_log == null)
+            return;
+        _log(obj);
     }
 
     public double GetTime()
     {
         return _globalTime;
-    }
-}
-
-public class WaveServiceConfiguration
-{
-    public WaveServiceConfiguration()
-    {
-        BlockCount = 8;
-        SampleRate = 44100;
-        BlockSamples = 512;
-        Channels = 2;
-    }
-    public int BlockCount { get; set; }
-    public int SampleRate { get; set; }
-    public int Channels { get; set; }
-    public int BlockSamples { get; set; }
-    
-    public Func<double,double> UserFunction { get; set; }
-    public WaveInterop.WaveInOutOpenFlags Flags { get; set; }
-
-    public void Log(object obj)
-    {
-        using var fs = new FileStream("op.txt",FileMode.Append);
-        var buff = $"{obj};{DateTime.Now}\r\n".StringToByteArray();
-        fs.Write(buff, 0, buff.Length);
     }
 }

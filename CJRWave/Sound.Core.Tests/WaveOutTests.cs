@@ -1,6 +1,6 @@
 using BufferUtilities;
-using NAudio.Wave;
 using Sound.Core.Models;
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core.Tests;
 
@@ -56,7 +56,7 @@ public class Tests
             BitsPerSample = 16,
             Channels = 1,
             SampleRate = 44100,
-            Flags = WaveInterop.WaveInOutOpenFlags.CallbackFunction
+            Flags = Wave.WaveInOutOpenFlags.CallbackFunction
         };
         return format;
     }

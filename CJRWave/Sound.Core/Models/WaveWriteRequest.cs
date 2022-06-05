@@ -1,5 +1,5 @@
 using BufferUtilities;
-using NAudio.Wave;
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core.Models;
 

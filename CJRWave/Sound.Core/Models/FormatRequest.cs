@@ -1,4 +1,4 @@
-using NAudio.Wave;
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
 
@@ -10,11 +10,11 @@ public class FormatRequest
 
     public int BitsPerSample { get; set; }
     
-    public WaveInterop.WaveInOutOpenFlags Flags { get; set; }
+    public Wave.WaveInOutOpenFlags Flags { get; set; }
 
     public WaveFormat BuildWaveFormat()
     {
         return  new WaveFormat(SampleRate, Channels);
     }
-    public WaveInterop.WaveCallback Callback { get; set; }
+    public Wave.WaveCallback Callback { get; set; }
 }

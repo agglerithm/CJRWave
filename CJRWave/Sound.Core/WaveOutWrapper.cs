@@ -1,8 +1,7 @@
 using System.Runtime.InteropServices;
 using BufferUtilities;
-using NAudio;
-using NAudio.Wave;
 using Sound.Core.Models;
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
 
@@ -18,32 +17,32 @@ public struct WaveOutWrapper
     {
         var deviceId = (IntPtr)0;
         var dwInstance = this.PtrFromStruct();
-        Validate(WaveInterop.waveOutOpen(
+        Validate(Wave.waveOutOpen(
             out  _currentWaveOutHandle, 
             deviceId, format.BuildWaveFormat(), format.Callback, dwInstance, format.Flags));
     }
 
     public void PrepareHeader(WaveWriteRequest req)
     {
-        var result = WaveInterop.waveOutPrepareHeader(_currentWaveOutHandle, 
+        var result = Wave.waveOutPrepareHeader(_currentWaveOutHandle, 
             req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
         Validate(result);
     }
     public void UnprepareHeader(WaveWriteRequest req)
     {
-        var result = WaveInterop.waveOutUnprepareHeader(_currentWaveOutHandle, 
+        var result = Wave.waveOutUnprepareHeader(_currentWaveOutHandle, 
             req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
         Validate(result);
     }
     public void Close()
     {
-        var result = WaveInterop.waveOutClose(_currentWaveOutHandle);
+        var result = Wave.waveOutClose(_currentWaveOutHandle);
         Validate(result);
     }
 
     public void Write(WaveWriteRequest req)
     {
-        var result = WaveInterop.waveOutWrite(
+        var result = Wave.waveOutWrite(
             _currentWaveOutHandle, 
             req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
         Validate(result);

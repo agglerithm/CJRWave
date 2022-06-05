@@ -1,5 +1,6 @@
-using NAudio.Wave;
-using NUnit.Framework;
+
+
+using Sound.Core.WaveInterop;
 
 namespace Sound.Core.Tests;
 
@@ -16,23 +17,32 @@ public class WaveServiceTests
             Channels = 1,
             BlockCount = 8,
             BlockSamples = 256,
-            Flags = WaveInterop.WaveInOutOpenFlags.CallbackFunction,
+            Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlayNote
         };
         _sut = new WaveService(config);
         _sut.Start();
-        while (_sut.GetTime() < 2)
-        {
-            _frequency = 440;
-        }
-
-        while (_sut.GetTime() < 4)
-            _frequency = 880;
-        _sut.End();
+        var counter = 0.0;
+            while(counter < 1.0)
+            {
+                counter += .05;
+                while (_sut.GetTime() < counter)
+                {
+                    _frequency = 440;
+                }
+            }
+            _sut.End(); 
+        
     }
-
+    
     private double PlayNote(double arg)
     {
-        return arg.SquareWave(23000, _frequency);
+        var val = arg.Chord(1, _frequency, 
+            _frequency * 1.5,
+            _frequency * 2, 
+            _frequency * 3, 
+            _frequency * 4, 
+            _frequency * 5);
+        return val;
     }
 }

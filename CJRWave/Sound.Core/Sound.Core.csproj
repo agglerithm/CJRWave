@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="AForge.Math" Version="2.2.5" />
-    <PackageReference Include="NAudio" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>

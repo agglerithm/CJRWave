@@ -10,7 +10,7 @@ public class WaveFunctionTests
     {
         double j = 0;
         double timespan = .0001;
-        int max = int.MaxValue;
+        short max = short.MaxValue;
         for (double i = 0; i < 1000; i++)
         {
             var smallTimeSpanWave = j.SineWave(.5, 440);
@@ -24,7 +24,7 @@ public class WaveFunctionTests
     {
         double j = 0;
         double timespan = .0001;
-        int max = int.MaxValue;
+        short max = short.MaxValue;
         for (double i = 0; i < 1000; i++)
         {
             var smallTimeSpanWave = j.SquareWave(.5, 440);

@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-
+﻿
 namespace Sound.Core
 {
     public static class SoundExtensions
@@ -23,7 +22,7 @@ namespace Sound.Core
         }
         public static double TriangleWave(this double timeElapsed, double amplitude, double frequency)
         {
-            return Math.Asin(timeElapsed.SineWave(frequency,amplitude)) * 2 / PI;
+            return Math.Asin(timeElapsed.SineWave(frequency,amplitude)) * 2.0 / PI;
         }
         public static double Chord(this double timeElapsed, double amplitude, params double[] frequencies)
         {
