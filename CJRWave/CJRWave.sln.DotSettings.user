@@ -1,4 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=10191ba9_002D67b1_002D4123_002Db016_002D74668e1516f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanReadWaveFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.Tests.CanReadWaveFile&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ccc7993_002Df297_002D4908_002Db45c_002Dae43012473aa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanReferenceAndDereferenceStruct" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceStruct&lt;/TestId&gt;&#xD;
@@ -18,8 +23,9 @@
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveFunctionTests.CanGetSineWave&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc0029ea_002Db766_002D4434_002D9da6_002Dfd90689b78d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanGetSineWave" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc0029ea_002Db766_002D4434_002D9da6_002Dfd90689b78d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsLocked="True" Name="CanGetSineWave" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveFunctionTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

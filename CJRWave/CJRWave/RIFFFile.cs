@@ -1,17 +1,18 @@
 ﻿using BufferUtilities;
 namespace CJRWave
 {
-    public class RIFFFile : BinaryFile
+    public abstract class RIFFFile : BinaryFile
     {
         protected RiffFileChunk _chunk = new RiffFileChunk();
         protected override void ReadData(Func<FileStream> getStream)
         {
             using (var stream = getStream())
             {
-                stream.Write(_chunk.ChunkData, 0, (int)_chunk.ChunkSize);
+                PopulateObject(stream);
             }
         }
 
+        protected abstract void PopulateObject(FileStream stream);
     }
 
     public class RiffFileChunk : RiffChunk

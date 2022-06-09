@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferUtilities.Tests", "Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sound.Core.Tests", "Sound.Core.Tests\Sound.Core.Tests.csproj", "{4BE677BC-D895-4B75-9A29-8CE66D1885E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CJRWave.Test", "..\CJRWave.Test\CJRWave.Test.csproj", "{491AC1AD-EE28-4E2C-BEBD-515D10C2A05B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4BE677BC-D895-4B75-9A29-8CE66D1885E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE677BC-D895-4B75-9A29-8CE66D1885E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE677BC-D895-4B75-9A29-8CE66D1885E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491AC1AD-EE28-4E2C-BEBD-515D10C2A05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491AC1AD-EE28-4E2C-BEBD-515D10C2A05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491AC1AD-EE28-4E2C-BEBD-515D10C2A05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491AC1AD-EE28-4E2C-BEBD-515D10C2A05B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

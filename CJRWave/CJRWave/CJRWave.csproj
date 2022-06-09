@@ -4,11 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BufferUtilities\BufferUtilities.csproj" />
-    <ProjectReference Include="..\..\..\BufferUtilities\BufferUtilities\BufferUtilities.csproj" />
   </ItemGroup>
 
 </Project>
