@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BufferUtilities\BufferUtilities.csproj" />
+    <ProjectReference Include="..\Sound.Core\Sound.Core.csproj" />
   </ItemGroup>
 
 </Project>

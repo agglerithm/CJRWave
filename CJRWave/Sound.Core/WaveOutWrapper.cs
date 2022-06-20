@@ -19,7 +19,7 @@ public struct WaveOutWrapper
         var dwInstance = this.PtrFromStruct();
         Validate(Wave.waveOutOpen(
             out  _currentWaveOutHandle, 
-            deviceId, format.BuildWaveFormat(), format.Callback, dwInstance, format.Flags));
+            deviceId, format.WaveFormat, format.Callback, dwInstance, format.Flags));
     }
 
     public void PrepareHeader(WaveWriteRequest req)

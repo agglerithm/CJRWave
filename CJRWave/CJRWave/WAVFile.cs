@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Xml;
 using BufferUtilities;
+using Sound.Core;
+using Sound.Core.WaveInterop;
 
 namespace CJRWave
 {
@@ -39,32 +41,12 @@ namespace CJRWave
                 throw new InvalidFileFormatException();
             this.Size = sizeBuff.ByteArrayToInt();
             var fmtSizeBuff = new byte[4];
-            var fmtTypeBuff = new byte[2];
-            var numChannelsBuff = new byte[2];
-            var sampleRateBuff = new byte[4];
-            var blockAlignBuff = new byte[4];
-            var avgDataRateBuff = new byte[4];
-            var bitsPerSampleBuff = new byte[2];
+            var fmtDataBuff = new byte[16];
             stream.Read(fmtSizeBuff, 0, 4);
             pos += 4;
-            stream.Read(fmtTypeBuff, 0, 2);
-            pos += 2;
-            stream.Read(numChannelsBuff, 0, 2);
-            pos += 2;
-            stream.Read(sampleRateBuff, 0, 4);
-            pos += 4;
-            stream.Read(blockAlignBuff, 0, 4);
-            pos += 4;
-            stream.Read(avgDataRateBuff, 0, 2);
-            pos += 2;
-            stream.Read(bitsPerSampleBuff, 0, 2);
-            pos += 2;
-            Format.SampleRate = sampleRateBuff.ByteArrayToUshort();
-            Format.BitsPerSample = bitsPerSampleBuff.ByteArrayToUshort();
-            Format.FormatType = fmtTypeBuff.ByteArrayToUshort();
-            Format.NumberOfChannels = numChannelsBuff.ByteArrayToUshort();
-            Format.BlockAlign = blockAlignBuff.ByteArrayToUint();
-            Format.AverageDataRate = avgDataRateBuff.ByteArrayToUshort();
+            stream.Read(fmtDataBuff, 0, 16);
+            pos += 16;
+            Format.DataBuffer = fmtDataBuff;
             var dataLabelBuff = new byte[4];
             stream.Read(dataLabelBuff, 0, 4);
             if (dataLabelBuff.ByteArrayToString() != "data")
@@ -76,6 +58,16 @@ namespace CJRWave
         }
 
         public int Size { get; set; }
+
+        public WavePlayerConfiguration GetConfiguration()
+        {
+            var val = new WavePlayerConfiguration(Format.GetWaveFormat())
+            {
+                Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
+                Length = Size
+            };
+            return val;
+        }
     }
 
     public class WavDataChunk : RiffChunk
@@ -110,7 +102,32 @@ namespace CJRWave
         {
             var bb = new BufferBuilder();
             bb.Append(ChunkId);
+            GetDataBuffer(bb);
             return bb;
+        }
+
+        private void GetDataBuffer(BufferBuilder bb)
+        {
+            if (DataBuffer != null)
+                bb.Append(DataBuffer);
+            else
+            {
+                bb.Append(FormatType);
+                bb.Append(NumberOfChannels);
+                bb.Append(SampleRate);
+                bb.Append(BlockAlign);
+                bb.Append(AverageDataRate);
+                bb.Append(BitsPerSample);
+            }
+        }
+
+        public byte[] DataBuffer { get; set; }
+
+        public WaveFormat GetWaveFormat()
+        {
+            var bb = GetData();
+            var reader = bb.GetReader();
+            return new WaveFormat(reader);
         }
     }
 }

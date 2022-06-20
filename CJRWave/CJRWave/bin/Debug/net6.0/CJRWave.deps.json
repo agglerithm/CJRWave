@@ -8,15 +8,44 @@
     ".NETCoreApp,Version=v6.0": {
       "CJRWave/1.0.0": {
         "dependencies": {
-          "BufferUtilities": "1.0.0"
+          "BufferUtilities": "1.0.0",
+          "Sound.Core": "1.0.0"
         },
         "runtime": {
           "CJRWave.dll": {}
         }
       },
+      "AForge/2.2.5": {
+        "runtime": {
+          "lib/AForge.dll": {
+            "assemblyVersion": "2.2.5.0",
+            "fileVersion": "2.2.5.0"
+          }
+        }
+      },
+      "AForge.Math/2.2.5": {
+        "dependencies": {
+          "AForge": "2.2.5"
+        },
+        "runtime": {
+          "lib/AForge.Math.dll": {
+            "assemblyVersion": "2.2.5.0",
+            "fileVersion": "2.2.5.0"
+          }
+        }
+      },
       "BufferUtilities/1.0.0": {
         "runtime": {
           "BufferUtilities.dll": {}
+        }
+      },
+      "Sound.Core/1.0.0": {
+        "dependencies": {
+          "AForge.Math": "2.2.5",
+          "BufferUtilities": "1.0.0"
+        },
+        "runtime": {
+          "Sound.Core.dll": {}
         }
       }
     }
@@ -27,7 +56,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AForge/2.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-clkumhM9DggqIzEXAHgVLeWO4arG5YfoPr7J4jfjJx35AoeEIJSSm49J25bwp/9mXQYLwi7y1Wunc8qgYJsGxg==",
+      "path": "aforge/2.2.5",
+      "hashPath": "aforge.2.2.5.nupkg.sha512"
+    },
+    "AForge.Math/2.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pmT1WobVv13vMxwXhCu8sRunxjiUHyURWS0+dsW/aBPi06xiyYIdCLHI6jph9Axb4QoLIlb85eBI6zd2EAbGIg==",
+      "path": "aforge.math/2.2.5",
+      "hashPath": "aforge.math.2.2.5.nupkg.sha512"
+    },
     "BufferUtilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Sound.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4,13 +4,30 @@ using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
 
-public class WaveService
+public interface IWaveService<T>
 {
-    public WaveService(WaveServiceConfiguration config)
+    void Start();
+    void End();
+    bool Playing();
+    double GetTime();
+    WaveServiceConfiguration<T> Configuration { get; set; }
+}
+
+public class WaveSynthService : IWaveService<double>
+{
+    public WaveSynthService(WaveServiceConfiguration<double> config)
+    {
+        Configure(config);
+    }
+
+    public bool Playing()
+    {
+        return _ready;
+    }
+    private void Configure(WaveServiceConfiguration<double> config)
     {
         _headers = new WaveHeader[config.BlockCount];
         _blocks = new BufferBuilder();
-        _channels = (uint)config.Channels;
         _sampleRate = (uint)config.SampleRate;
         _blockCount = (uint)config.BlockCount;
         _blockSamples = (uint)config.BlockSamples;
@@ -18,8 +35,7 @@ public class WaveService
         _userFunction = config.UserFunction;
         _format = new FormatRequest
         {
-            Channels = config.Channels, 
-            SampleRate = config.SampleRate,
+            WaveFormat = new WaveFormat(config.SampleRate,config.Channels),
             Callback = callback,
             Flags = config.Flags
         };
@@ -29,10 +45,11 @@ public class WaveService
         }
 
         _log = config.Log;
+        _configuration = config;
     }
+
     private uint _sampleRate;
-    private uint _channels;
-    private readonly uint _blockCount;
+    private uint _blockCount;
     private uint _blockSamples;
     private uint _blockCurrent;
     private uint _blockFree;
@@ -40,12 +57,13 @@ public class WaveService
     private AutoResetEvent _resetEvent = new(false);
     private WaveHeader[] _headers;
     private BufferBuilder _blocks;
-    private readonly FormatRequest _format;
+    private FormatRequest _format;
     private double _globalTime;
     private bool _ready = true;
     private Func<double, double> _userFunction;
     WaveOutWrapper _wavStruct = new();
-    private readonly Action<object> _log;
+    private Action<object>? _log;
+    private WaveServiceConfiguration<double> _configuration;
 
     public void Start()
     {
@@ -116,13 +134,17 @@ public class WaveService
 
     private void LogValue(object obj)
     {
-        if (_log == null)
-            return;
-        _log(obj);
+        _log?.Invoke(obj);
     }
 
     public double GetTime()
     {
         return _globalTime;
+    }
+
+    public WaveServiceConfiguration<double> Configuration
+    {
+        get { return _configuration; } 
+        set{Configure(value);}
     }
 }

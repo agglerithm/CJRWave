@@ -4,17 +4,14 @@ namespace Sound.Core;
 
 public class FormatRequest
 {
-    public int Channels  { get; set; }
+    public int Channels => WaveFormat.Channels;
 
-    public int SampleRate { get; set; }
+    public int SampleRate => WaveFormat.SampleRate;
 
-    public int BitsPerSample { get; set; }
+    public int BitsPerSample => WaveFormat.BitsPerSample;
     
     public Wave.WaveInOutOpenFlags Flags { get; set; }
-
-    public WaveFormat BuildWaveFormat()
-    {
-        return  new WaveFormat(SampleRate, Channels);
-    }
+    
     public Wave.WaveCallback Callback { get; set; }
+    public WaveFormat WaveFormat { get; set; }
 }

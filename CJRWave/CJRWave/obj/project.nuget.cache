@@ -1,8 +1,32 @@
 {
   "version": 2,
-  "dgSpecHash": "/5UmT6ZuLPQVs3Ht+pvcVwJoYyccAW5qFACeYd5CGjk5LH2B0msQhYbb9qcqKWVwkkVgTBi/Jj1MriNbHu9jBQ==",
+  "dgSpecHash": "bf3OIcF8gK7m5OWt4RCNTXHPH0sdn1tmfoWSYn1csCZBb5ke3OWkaMTC6cCtRKqru7JL4nVO4QHcCO+1cZcMJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\John\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
+    "C:\\Users\\John\\.nuget\\packages\\aforge.math\\2.2.5\\aforge.math.2.2.5.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'AForge 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "AForge",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'AForge.Math 2.2.5' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "AForge.Math",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

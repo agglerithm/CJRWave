@@ -7,12 +7,13 @@ namespace Sound.Core.Tests;
 [TestFixture]
 public class WaveServiceTests
 {
-    private WaveService _sut;
+    private WaveSynthService _sut;
     private double _frequency;
+    
     [Test]
     public  void CanRunService()
     {
-        var config = new WaveServiceConfiguration()
+        var config = new WaveServiceConfiguration<double>()
         {
             Channels = 1,
             BlockCount = 8,
@@ -20,7 +21,7 @@ public class WaveServiceTests
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlayNote
         };
-        _sut = new WaveService(config);
+        _sut = new WaveSynthService(config);
         _sut.Start();
         var counter = 0.0;
             while(counter < 1.0)

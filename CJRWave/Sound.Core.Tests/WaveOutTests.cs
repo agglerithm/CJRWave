@@ -53,9 +53,7 @@ public class Tests
     {
         var format = new FormatRequest()
         {
-            BitsPerSample = 16,
-            Channels = 1,
-            SampleRate = 44100,
+            WaveFormat = new WaveFormat(44100,16,1),
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction
         };
         return format;

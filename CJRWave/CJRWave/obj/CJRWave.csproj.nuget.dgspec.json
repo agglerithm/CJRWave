@@ -1,53 +1,94 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj": {}
+    "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj": {}
   },
   "projects": {
-    "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj",
-        "projectName": "BufferUtilities",
-        "projectPath": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj",
-        "frameworks": {
-          "net48": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net48": {}
-      }
-    },
-    "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj": {
+    "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
-        "projectName": "CJRWave",
-        "projectPath": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
-        "packagesPath": "C:\\Users\\john\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\obj\\",
+        "projectUniqueName": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj",
+        "projectName": "BufferUtilities",
+        "projectPath": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj",
+        "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\john\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
+        "projectName": "CJRWave",
+        "projectPath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\CJRWave.csproj",
+        "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\CJRWave\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
-                "projectPath": "C:\\Users\\john\\OneDrive\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj"
+              "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
+                "projectPath": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj"
+              },
+              "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\Sound.Core.csproj": {
+                "projectPath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\Sound.Core.csproj"
               }
             }
           }
@@ -76,7 +117,72 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\Sound.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\Sound.Core.csproj",
+        "projectName": "Sound.Core",
+        "projectPath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\Sound.Core.csproj",
+        "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\John\\Documents\\GitHub\\CJRWave\\CJRWave\\Sound.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj": {
+                "projectPath": "C:\\Users\\John\\Documents\\GitHub\\BufferUtilities\\BufferUtilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AForge.Math": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

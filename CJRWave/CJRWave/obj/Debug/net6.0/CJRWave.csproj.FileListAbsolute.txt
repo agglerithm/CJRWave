@@ -13,3 +13,5 @@ C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\refint\CJRWave.dll
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\CJRWave.pdb
 C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\obj\Debug\net6.0\ref\CJRWave.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\Sound.Core.dll
+C:\Users\John\Documents\GitHub\CJRWave\CJRWave\CJRWave\bin\Debug\net6.0\Sound.Core.pdb

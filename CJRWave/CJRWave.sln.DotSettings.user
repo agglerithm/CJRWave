@@ -1,7 +1,18 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=10191ba9_002D67b1_002D4123_002Db016_002D74668e1516f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanReadWaveFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=10191ba9_002D67b1_002D4123_002Db016_002D74668e1516f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanReadWaveFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.Tests.CanReadWaveFile&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=606c7b3f_002Dc91f_002D4b7e_002D8c20_002D2dd0a5db89f8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanPlayWaveFile #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests.CanPlayWaveFile&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WavFileTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=661e0348_002D7c0d_002D4773_002Db96c_002D673c88c4a70f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanPlayWaveFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests.CanPlayWaveFile&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ccc7993_002Df297_002D4908_002Db45c_002Dae43012473aa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanReferenceAndDereferenceStruct" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
@@ -9,6 +20,12 @@
     &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceStruct&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::949F3F00-658F-4E37-BB3D-B7F1C6FF358C::net6.0::BufferUtilities.Tests.Tests.CanReferenceAndDereferenceBuffer&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.Tests.CanGetDevices&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a796083b_002D8cbf_002D4d7b_002Dbad0_002Dff72058ec9a4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanPlayWaveFile #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
@@ -27,5 +44,10 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveFunctionTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d646c3ff_002D61cb_002D434c_002Dbd17_002D16b99aea96b2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanPlayWaveFile #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests.CanPlayWaveFile&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
