@@ -34,6 +34,7 @@ public class WaveFilePlayer : IWaveFilePlayer
     private void PlayFile(WAVFile file)
     {
         _ws.Configuration = file.GetConfiguration();
+        _ws.UserFunction = TimeAction;
         _ws.Play();
     }
 

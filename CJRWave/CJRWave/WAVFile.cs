@@ -39,14 +39,35 @@ namespace CJRWave
                 throw new InvalidFileFormatException();
             if(fmtBuff.ByteArrayToString() != Constants.Format)
                 throw new InvalidFileFormatException();
-            this.Size = sizeBuff.ByteArrayToInt();
+            this.Size = sizeBuff.ToggleEndian().ByteArrayToInt();
             var fmtSizeBuff = new byte[4];
-            var fmtDataBuff = new byte[16];
+            var fmtTypeBuff = new byte[2];
+            var numChannelsBuff = new byte[2];
+            var sampleRateBuff = new byte[4];
+            var avgDataRateBuff = new byte[4];
+            var blockAlignBuff = new byte[2];
+            var bitsPerSampleBuff = new byte[2];
             stream.Read(fmtSizeBuff, 0, 4);
             pos += 4;
-            stream.Read(fmtDataBuff, 0, 16);
-            pos += 16;
-            Format.DataBuffer = fmtDataBuff;
+            stream.Read(fmtTypeBuff, 0, 2);
+            pos += 2;
+            stream.Read(numChannelsBuff, 0, 2);
+            pos += 2;
+            stream.Read(sampleRateBuff, 0, 4);
+            pos += 4;
+            stream.Read(avgDataRateBuff, 0, 4);
+            pos += 4;
+            stream.Read(blockAlignBuff, 0, 2);
+            pos += 2;
+            stream.Read(bitsPerSampleBuff, 0, 2);
+            pos += 2;
+            Format.FormatSize = fmtSizeBuff.ByteArrayToUint();
+            Format.FormatType = fmtTypeBuff.ByteArrayToUshort();
+            Format.NumberOfChannels = numChannelsBuff.ByteArrayToUshort();
+            Format.SampleRate = sampleRateBuff.ByteArrayToUshort();
+            Format.BlockAlign = blockAlignBuff.ByteArrayToUshort();
+            Format.AverageDataRate = avgDataRateBuff.ByteArrayToUint();
+            Format.BitsPerSample = bitsPerSampleBuff.ByteArrayToUshort();
             var dataLabelBuff = new byte[4];
             stream.Read(dataLabelBuff, 0, 4);
             if (dataLabelBuff.ByteArrayToString() != "data")
@@ -96,38 +117,32 @@ namespace CJRWave
         public ushort NumberOfChannels { get; set; }
         public ushort SampleRate { get; set; } 
         public ushort BitsPerSample { get; set; }
-        public uint BlockAlign { get; set; }
-        public ushort AverageDataRate { get; set; }
+        public ushort BlockAlign { get; set; }
+        public uint AverageDataRate { get; set; }
+        public uint FormatSize { get; set; }
+
         protected override BufferBuilder GetData()
         {
             var bb = new BufferBuilder();
-            bb.Append(ChunkId);
-            GetDataBuffer(bb);
-            return bb;
-        }
-
-        private void GetDataBuffer(BufferBuilder bb)
-        {
-            if (DataBuffer != null)
-                bb.Append(DataBuffer);
-            else
-            {
+            bb.Append(FormatSize);
                 bb.Append(FormatType);
                 bb.Append(NumberOfChannels);
                 bb.Append(SampleRate);
-                bb.Append(BlockAlign);
                 bb.Append(AverageDataRate);
+                bb.Append(BlockAlign);
                 bb.Append(BitsPerSample);
-            }
+            return bb;
         }
-
-        public byte[] DataBuffer { get; set; }
-
+        
         public WaveFormat GetWaveFormat()
         {
-            var bb = GetData();
-            var reader = bb.GetReader();
-            return new WaveFormat(reader);
+            return new WaveFormat(FormatSize,
+                FormatType,
+                NumberOfChannels,
+                SampleRate,
+                AverageDataRate,
+                BlockAlign,
+                BitsPerSample);
         }
     }
 }

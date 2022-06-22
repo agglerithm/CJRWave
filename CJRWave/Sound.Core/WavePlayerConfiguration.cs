@@ -53,5 +53,5 @@ public class WavePlayerConfiguration
 
     public Action<object>? Log { get; set; }
 
-    public Func<double,int> UserFunction { get; set; }
+    public Func<double,short> UserFunction { get; set; }
 }

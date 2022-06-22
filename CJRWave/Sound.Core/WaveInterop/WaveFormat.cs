@@ -153,6 +153,31 @@ public class WaveFormat
         this.ReadWaveFormat(br, formatChunkLength);
     }
 
+    public WaveFormat(uint formatSize, 
+        uint formatType, 
+        ushort numberOfChannels, 
+        ushort sampleRate, 
+        uint averageDataRate, 
+        ushort blockAlign, 
+        ushort bitsPerSample,
+        short extraSize = 0)
+    {
+        if (formatSize < 16)
+            throw new InvalidDataException("Invalid WaveFormat Structure");
+        this.waveFormatTag = (WaveFormatEncoding) formatType;
+        this.channels = (short)numberOfChannels;
+        this.sampleRate = sampleRate;
+        this.averageBytesPerSecond = (int)averageDataRate;
+        this.blockAlign = (short)blockAlign;
+        this.bitsPerSample = (short)bitsPerSample;
+        if (formatSize <= 16)
+            return;
+        this.extraSize = extraSize;
+        if ((int) this.extraSize == formatSize - 18)
+            return;
+        this.extraSize = (short) (formatSize - 18);
+    }
+
     public override string ToString()
     {
         switch (this.waveFormatTag)

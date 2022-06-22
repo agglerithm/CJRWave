@@ -8,6 +8,7 @@ public interface IWavePlayerService
 {
     void Play();
     WavePlayerConfiguration Configuration { get; set; }
+    Func<double, short> UserFunction { get; set; }
 }
 
 public class WavePlayerService : IWavePlayerService
@@ -24,6 +25,7 @@ public class WavePlayerService : IWavePlayerService
             _headers[i] = new WaveHeader { bufferLength = (int)BlockSamples * 4 };
         }
     }
+
     private int SampleRate => _configuration.SampleRate;
 
     private int BlockCount {
@@ -34,13 +36,13 @@ public class WavePlayerService : IWavePlayerService
         get => _configuration.BlockSamples;
         set => _configuration.BlockSamples = value;
     }
-
-    private int _currentByte;
-    private int FileSize
+    public Func<double, short> UserFunction
     {
-        get { return _configuration.Length; }
-        set { _configuration.Length = value; }
+        get => _configuration.UserFunction;
+        set => _configuration.UserFunction = value;
     }
+    private int _currentByte;
+    private int FileSize => _configuration.Length;
     private int _blockCurrent;
 
     private int _blockFree;
