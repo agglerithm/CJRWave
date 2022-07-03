@@ -22,7 +22,7 @@ public class WavePlayerService : IWavePlayerService
         _configuration.Log = Log;
         for (int i = 0; i < BlockCount; i++)
         {
-            _headers[i] = new WaveHeader { bufferLength = (int)BlockSamples * 4 };
+            _headers[i] = new WaveHeader { bufferLength = BlockSamples * 4 };
         }
     }
 
@@ -47,7 +47,7 @@ public class WavePlayerService : IWavePlayerService
 
     private int _blockFree;
     
-    private AutoResetEvent _resetEvent = new(false);
+    private readonly AutoResetEvent _resetEvent = new(false);
     private WaveHeader[] _headers;
     private FormatRequest Format
     {
@@ -84,11 +84,11 @@ public class WavePlayerService : IWavePlayerService
     {
         if (message != Wave.WaveMessage.WaveOutDone)
         {
-            LogValue(message);
             return;
         }
 
         _blockFree++;
+        LogValue($"Setting:{_blockFree}");
         _resetEvent.Set();
     }
     public void Play()
@@ -99,16 +99,16 @@ public class WavePlayerService : IWavePlayerService
         while (_ready)
         {
             var bb = new BufferBuilder();
-            if (_blockFree == 0)
+            if (_blockFree <= 0)
                 _resetEvent.WaitOne();
+            LogValue(_blockFree);
             _blockFree--;
             if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
                 _wavStruct.UnprepareHeader(new WaveWriteRequest()
                     {Flags=WaveHeaderFlags.Prepared});
             for (var i = 0; i < BlockSamples; i++)
             {
-                int nextSample = _configuration.UserFunction(_globalTime);
-                LogValue(nextSample);
+                short nextSample = _configuration.UserFunction(_globalTime);
                 bb.Append(nextSample);
                 _globalTime += timeStep;
                 _currentByte += 2;

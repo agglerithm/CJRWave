@@ -23,7 +23,7 @@
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a796083b_002D8cbf_002D4d7b_002Dbad0_002Dff72058ec9a4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanPlayWaveFile #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a796083b_002D8cbf_002D4d7b_002Dbad0_002Dff72058ec9a4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanPlayWaveFile #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
@@ -46,8 +46,9 @@
     &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d646c3ff_002D61cb_002D434c_002Dbd17_002D16b99aea96b2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CanPlayWaveFile #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d646c3ff_002D61cb_002D434c_002Dbd17_002D16b99aea96b2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CanPlayWaveFile #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::491AC1AD-EE28-4E2C-BEBD-515D10C2A05B::net6.0::CJRWave.Test.WaveFilePlayerTests.CanPlayWaveFile&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4BE677BC-D895-4B75-9A29-8CE66D1885E2::net6.0::Sound.Core.Tests.WaveServiceTests.CanRunService&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

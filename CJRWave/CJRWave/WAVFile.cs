@@ -39,7 +39,7 @@ namespace CJRWave
                 throw new InvalidFileFormatException();
             if(fmtBuff.ByteArrayToString() != Constants.Format)
                 throw new InvalidFileFormatException();
-            this.Size = sizeBuff.ToggleEndian().ByteArrayToInt();
+            this.Size = sizeBuff.ByteArrayToInt();
             var fmtSizeBuff = new byte[4];
             var fmtTypeBuff = new byte[2];
             var numChannelsBuff = new byte[2];
@@ -70,6 +70,7 @@ namespace CJRWave
             Format.BitsPerSample = bitsPerSampleBuff.ByteArrayToUshort();
             var dataLabelBuff = new byte[4];
             stream.Read(dataLabelBuff, 0, 4);
+            pos += 4;
             if (dataLabelBuff.ByteArrayToString() != "data")
                 throw new InvalidFileFormatException();
             var dataLength = (int)(stream.Length - pos);

@@ -23,28 +23,60 @@ public struct WaveOutWrapper
     }
 
     public void PrepareHeader(WaveWriteRequest req)
-    {
-        var result = Wave.waveOutPrepareHeader(_currentWaveOutHandle, 
-            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+    {        
+        MmResult result;
+        try
+        {
+            result = Wave.waveOutPrepareHeader(_currentWaveOutHandle, 
+                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        }
+        catch (Exception ex)
+        {
+            throw new WaveOutException(ex);
+        }
         Validate(result);
     }
     public void UnprepareHeader(WaveWriteRequest req)
-    {
-        var result = Wave.waveOutUnprepareHeader(_currentWaveOutHandle, 
-            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+    {        
+        MmResult result;
+        try
+        {
+            result = Wave.waveOutUnprepareHeader(_currentWaveOutHandle, 
+                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        }
+        catch (Exception ex)
+        {
+            throw new WaveOutException(ex);
+        }
         Validate(result);
     }
     public void Close()
     {
-        var result = Wave.waveOutClose(_currentWaveOutHandle);
+        MmResult result;
+        try
+        {
+            result = Wave.waveOutClose(_currentWaveOutHandle);
+        }
+        catch (Exception ex)
+        {
+            throw new WaveOutException(ex);
+        }
         Validate(result);
     }
 
     public void Write(WaveWriteRequest req)
     {
-        var result = Wave.waveOutWrite(
-            _currentWaveOutHandle, 
-            req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        MmResult result;
+        try
+        {
+            result = Wave.waveOutWrite(
+                _currentWaveOutHandle, 
+                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+        }
+        catch (Exception ex)
+        {
+            throw new WaveOutException(ex);
+        }
         Validate(result);
     }
 
@@ -54,6 +86,13 @@ public struct WaveOutWrapper
             throw new MmException(result);
     }
 
+}
+
+public class WaveOutException : Exception
+{
+    public WaveOutException(Exception innerException):base(innerException.ToString())
+    { 
+    }
 }
 
 public class MmException:Exception

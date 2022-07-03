@@ -4,7 +4,7 @@ namespace Sound.Core
     public static class SoundExtensions
     {
         private const double PI = 3.14159;
-        private static double GetSine(this double timeElapsed, double frequency)
+        public static double GetSine(this double timeElapsed, double frequency)
         {
             return Math.Sin(frequency.AngularVelocity() * timeElapsed);
         }
@@ -26,12 +26,13 @@ namespace Sound.Core
         }
         public static double Chord(this double timeElapsed, double amplitude, params double[] frequencies)
         {
-            var sum = 0.0;
-            foreach(var f in frequencies)
-            {
-                sum += timeElapsed.GetSine(f);
-            }
+            var sum = frequencies.Where(f => f != 0).Sum(f => timeElapsed.GetSine(f));
             return amplitude * sum;
+        }
+        public static double Aliens(this double timeElapsed, double amplitude, params double[] frequencies)
+        {
+            var sum = frequencies.Where(f => f != 0).Sum(f => timeElapsed.GetSine(f)) * amplitude;
+            return sum;
         }
         private static double AngularVelocity(this double frequency)
         {
