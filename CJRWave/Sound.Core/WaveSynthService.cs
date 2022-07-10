@@ -10,21 +10,22 @@ public interface IWaveService<T>
     void End();
     bool Playing();
     double GetTime();
-    WaveServiceConfiguration<T> Configuration { get; set; }
+    WaveSynthServiceConfiguration Configuration { get; set; }
 }
 
 public class WaveSynthService : IWaveService<double>
 {
-    public WaveSynthService(WaveServiceConfiguration<double> config)
+    public WaveSynthService(WaveSynthServiceConfiguration config)
     {
         Configure(config);
+        _maxSample = short.MaxValue;
     }
 
     public bool Playing()
     {
         return _ready;
     }
-    private void Configure(WaveServiceConfiguration<double> config)
+    private void Configure(WaveSynthServiceConfiguration config)
     {
         _headers = new WaveHeader[config.BlockCount];
         _blockFree = config.BlockCount;
@@ -47,7 +48,7 @@ public class WaveSynthService : IWaveService<double>
     private uint _blockCurrent;
     private uint _blockFree;
     private Thread _thread;
-    private AutoResetEvent _resetEvent = new(false);
+    private readonly AutoResetEvent _resetEvent = new(false);
     private static Mutex _mutex = new();
     private WaveHeader[] _headers;
     private FormatRequest _format;
@@ -56,7 +57,8 @@ public class WaveSynthService : IWaveService<double>
     private Func<double, double> _userFunction;
     WaveOutWrapper _wavStruct = new();
     private Action<object>? _log;
-    private WaveServiceConfiguration<double> _configuration;
+    private WaveSynthServiceConfiguration _configuration;
+    private readonly double _maxSample;
 
     public void Start()
     {
@@ -92,30 +94,19 @@ public class WaveSynthService : IWaveService<double>
         _wavStruct.Open(_format);
         _globalTime = 0.0;
         double timeStep = 1.0 / _configuration.SampleRate;
-        short maxSample = short.MaxValue;
         while (_ready)
         {
-            var bb = new BufferBuilder();
             if (_blockFree <= 0)
                 _resetEvent.WaitOne();
             _blockFree--;
             if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
                 _wavStruct.UnprepareHeader(new WaveWriteRequest()
                     {Flags=WaveHeaderFlags.Prepared});
-            int nextSample;
-            for (var i = 0; i < _configuration.BlockSamples; i++)
-            {
-                var initialValue = _userFunction(_globalTime);
-                var clipped = clipSample(initialValue, 1);
-                nextSample = (int)(clipped * (float)maxSample);
-                LogValue(nextSample);
-                bb.Append(nextSample);
-                _globalTime += timeStep;
-            }
-            _headers[_blockCurrent].userData = bb.ToByteArray().PtrFromByteArray();
+            var dataBuff = GetDataBuff(timeStep);
+            _headers[_blockCurrent].userData = dataBuff.PtrFromByteArray();
             var request = new WaveWriteRequest()
             {
-                Data = bb.ToByteArray(),
+                Data = dataBuff,
                 Flags = WaveHeaderFlags.Prepared
             };
             _wavStruct.PrepareHeader(request);
@@ -123,6 +114,22 @@ public class WaveSynthService : IWaveService<double>
             _blockCurrent++;
             _blockCurrent %= _configuration.BlockCount;
         }
+    }
+
+    private byte[] GetDataBuff(double timeStep)
+    {
+        var bb = new BufferBuilder();
+        for (var i = 0; i < _configuration.BlockSamples; i++)
+        {
+            var initialValue = _userFunction(_globalTime);
+            var clipped = clipSample(initialValue, 1);
+            var nextSample = (int)(clipped * _maxSample);
+            LogValue(nextSample);
+            bb.Append(nextSample);
+            _globalTime += timeStep;
+        }
+
+        return bb.ToByteArray();
     }
 
     private void LogValue(object obj)
@@ -135,9 +142,9 @@ public class WaveSynthService : IWaveService<double>
         return _globalTime;
     }
 
-    public WaveServiceConfiguration<double> Configuration
+    public WaveSynthServiceConfiguration Configuration
     {
-        get { return _configuration; } 
-        set{Configure(value);}
+        get => _configuration;
+        set => Configure(value);
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using BufferUtilities;
 using Sound.Core.Models;
 using Sound.Core.WaveInterop;
@@ -20,9 +21,9 @@ public class WavePlayerService : IWavePlayerService
         _blockFree = BlockCount;
         _configuration.Callback = Callback;
         _configuration.Log = Log;
-        for (int i = 0; i < BlockCount; i++)
+        for (var i = 0; i < BlockCount; i++)
         {
-            _headers[i] = new WaveHeader { bufferLength = BlockSamples * 4 };
+            _headers[i] = new WaveHeader { bufferLength = BlockSamples * 2 };
         }
     }
 
@@ -47,7 +48,7 @@ public class WavePlayerService : IWavePlayerService
 
     private int _blockFree;
     
-    private readonly AutoResetEvent _resetEvent = new(false);
+    private readonly ManualResetEventSlim _resetEvent = new(false);
     private WaveHeader[] _headers;
     private FormatRequest Format
     {
@@ -95,40 +96,47 @@ public class WavePlayerService : IWavePlayerService
     {
         _wavStruct.Open(Format);
         _globalTime = 0.0;
-        double timeStep = 1.0 / SampleRate;
+        var timeStep = 1.0 / SampleRate;
         while (_ready)
         {
-            var bb = new BufferBuilder();
-            if (_blockFree <= 0)
-                _resetEvent.WaitOne();
-            LogValue(_blockFree);
+            Debug.Assert(_blockFree >= 0, "Number of blocks should not be less than zero");
+            if (_blockFree == 0)
+                _resetEvent.Wait();
             _blockFree--;
             if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
                 _wavStruct.UnprepareHeader(new WaveWriteRequest()
                     {Flags=WaveHeaderFlags.Prepared});
-            for (var i = 0; i < BlockSamples; i++)
-            {
-                short nextSample = _configuration.UserFunction(_globalTime);
-                bb.Append(nextSample);
-                _globalTime += timeStep;
-                _currentByte += 2;
-            }
+            var dataBuff = GetBlockData(timeStep);
 
-            _headers[_blockCurrent].userData = bb.ToByteArray().PtrFromByteArray();
+            _headers[_blockCurrent].userData = dataBuff.PtrFromByteArray();
             var request = new WaveWriteRequest()
             {
-                Data = bb.ToByteArray(),
+                Data = dataBuff,
                 Flags = WaveHeaderFlags.Prepared
             };
             _wavStruct.PrepareHeader(request);
             _wavStruct.Write(request);
             _blockCurrent++;
             _blockCurrent %= BlockCount;
-            LogValue(_currentByte);
             if (_currentByte == FileSize)
                 _ready = false;
         }
         _wavStruct.Close();
+        _resetEvent.Reset();
+    }
+
+    private byte[] GetBlockData( double timeStep)
+    {
+        var bb = new BufferBuilder();
+        for (var i = 0; i < BlockSamples; i++)
+        {
+            var nextSample = _configuration.UserFunction(_globalTime);
+            bb.Append(nextSample);
+            _globalTime += timeStep;
+            _currentByte += 2;
+        }
+
+        return bb.ToByteArray();
     }
 
     public WavePlayerConfiguration Configuration

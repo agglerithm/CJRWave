@@ -14,11 +14,7 @@ public class WaveFilePlayerTests
 
     private static void log(object? obj)
     {
-        if (obj == null) return;
-        using var fs = new FileStream("op.txt",FileMode.Append);
-        var str = $"{obj.GetType().Name};{obj}\r\n";
-        var buff = str.StringToByteArray();
-        fs.Write(buff,0,buff.Length);
+        Console.WriteLine(obj);
     }
 
     [Test]

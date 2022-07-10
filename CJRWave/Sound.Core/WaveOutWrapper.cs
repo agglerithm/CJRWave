@@ -27,8 +27,9 @@ public struct WaveOutWrapper
         MmResult result;
         try
         {
+            var header = req.GetHeader();
             result = Wave.waveOutPrepareHeader(_currentWaveOutHandle, 
-                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+                header, MarshalExtensions.SizeOf<WaveHeader>());
         }
         catch (Exception ex)
         {

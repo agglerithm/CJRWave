@@ -5,6 +5,7 @@ namespace CJRWave;
 public interface IWaveFilePlayer
 {
     void Play(string path);
+    short Volume { get; set; }
 }
 
 public class WaveFilePlayer : IWaveFilePlayer
@@ -16,8 +17,9 @@ public class WaveFilePlayer : IWaveFilePlayer
     public WaveFilePlayer(IWavePlayerService svc)
     {
         _ws = svc;
+        Volume = 5;
     }
-
+    public short Volume { get; set; }
     public void Play(string path)
     {
         var wf = LoadFile(path);
@@ -40,7 +42,7 @@ public class WaveFilePlayer : IWaveFilePlayer
 
     private short TimeAction(double elapsedTime)
     {
-        if (_dataPoints.Length != _currentDataPoint) return _dataPoints[_currentDataPoint++];
+        if (_dataPoints.Length != _currentDataPoint) return (short)(_dataPoints[_currentDataPoint++] * Volume);
         return 0;
     }
 }

@@ -2,9 +2,9 @@ using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
 
-public class WaveServiceConfiguration<T>
+public class WaveSynthServiceConfiguration
 {
-    public WaveServiceConfiguration()
+    public WaveSynthServiceConfiguration()
     {
         BlockCount = 8;
         SampleRate = 44100;
@@ -16,12 +16,9 @@ public class WaveServiceConfiguration<T>
     public int Channels { get; set; }
     public uint BlockSamples { get; set; }
     
-    public Func<double,T> UserFunction { get; set; }
+    public Func<double,double> UserFunction { get; set; }
     public Wave.WaveInOutOpenFlags Flags { get; set; }
 
     public Action<object>? Log { get; set; }
-
-}
-public class WaveSynthConfiguration:WaveServiceConfiguration<double>{
 
 }

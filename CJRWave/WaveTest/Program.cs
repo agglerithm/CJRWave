@@ -5,7 +5,7 @@ using CJRWave;
 using Sound.Core;
 
 IWaveFilePlayer sut = new WaveFilePlayer(new WavePlayerService());
-
+sut.Volume = 10;
 sut.Play("dance.wav");
 
 static void log(object? obj)
