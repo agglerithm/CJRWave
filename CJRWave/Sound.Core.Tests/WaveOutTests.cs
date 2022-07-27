@@ -59,12 +59,12 @@ public class Tests
         return format;
     }
 
-    private static WaveWriteRequest GetWriteRequest(WaveHeaderFlags flags)
+    private static WaveHeader GetWriteRequest(WaveHeaderFlags flags)
     {
-        return new WaveWriteRequest()
+        return new WaveHeader()
         {
-            Flags = flags,
-            Data = GetRandomData()
+            flags = flags,
+            dataBuffer = GetRandomData().PtrFromByteArray()
         };
     }
 

@@ -10,7 +10,7 @@ public class WaveServiceTests
 {
     private WaveSynthService _sut;
     private double _frequency;
-    private SoundSpectrum _spectrum = new SoundSpectrum(400.00);
+    private readonly SoundSpectrum _spectrum = new(400.00);
     
     [Test]
     public  void CanRunServiceWithSpectrum()
@@ -18,8 +18,8 @@ public class WaveServiceTests
         var config = new WaveSynthServiceConfiguration()
         {
             Channels = 1,
-            BlockCount = 8,
-            BlockSamples = 256,
+            BlockCount = 1,
+            BlockSamples = 512,
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlayNote, 
             SampleRate = 44100,
@@ -28,67 +28,37 @@ public class WaveServiceTests
         _sut = new WaveSynthService(config);
         _sut.Start();
         var counter = 0.0;
-        var marker = counter;
         _frequency = 400.0;
+        _spectrum.Add(_frequency * 2);
+        _spectrum.Add(_frequency * 3);
+        _spectrum.Add(_frequency * 4);
         while (counter < 1.0)
         {
-            counter += .05;
-            while (marker < counter)
-            {
-                marker = _sut.GetTime();
-            }
+            counter = _sut.GetTime();
         }
-
         while (counter < 2.0)
         {
-            counter += .05;
-            _spectrum.Add(_frequency * 2);
-            while (marker < counter)
-            {
-                marker = _sut.GetTime();
-            }
+            counter = _sut.GetTime();
         }
-
         while (counter < 3.0)
         {
-            _spectrum.Add(_frequency * 3);
-            counter += .05;
-            while (marker < counter)
-            {
-                marker = _sut.GetTime();
-            }
+            counter = _sut.GetTime(); 
         }
-
         while (counter < 4.0)
         {
-            counter += .05;
-            _spectrum.Add(_frequency * 4);
-            while (marker < counter)
-            {
-                marker = _sut.GetTime();
-            }
+            counter = _sut.GetTime();
         }
-
-
+        _spectrum.Add(_frequency * 1.5);
         while (counter < 5.0)
         {
-            counter += .05;
-            _spectrum.Add(_frequency * 1.5);
-            while (marker < counter)
-            {
-                marker = _sut.GetTime();
-            }
+            counter = _sut.GetTime();
         }
-
-    
         _sut.End(); 
-        
     }
 
-    private double _counter = 0;
     private double PlayNote(double arg)
     {
-        var val = _spectrum.GetImpulse(arg, 1);
+        var val = _spectrum.GetImpulse(arg, 3);
         //, _frequency * 1.5);
         return val;
     }
@@ -100,24 +70,22 @@ public class WaveServiceTests
         var config = new WaveSynthServiceConfiguration()
         {
             Channels = 1,
-            BlockCount = 8,
-            BlockSamples = 256,
+            BlockCount = 1,
+            BlockSamples = 512,
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlaySineWave, 
-            SampleRate = 44100
+            SampleRate = 44100,
+            Log = Console.WriteLine
         };
         _sut = new WaveSynthService(config);
         _sut.Start();
         var counter = 0.0;
         _frequency = baseFreq;
-        while (counter < 10.0)
+        while (counter < 1.0)
         {
             counter = _sut.GetTime();
         }
-        Console.WriteLine(counter);
-    
         _sut.End(); 
-        
     }
 
     private double PlaySineWave(double arg)

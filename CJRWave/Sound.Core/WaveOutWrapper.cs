@@ -1,6 +1,4 @@
-using System.Runtime.InteropServices;
 using BufferUtilities;
-using Sound.Core.Models;
 using Sound.Core.WaveInterop;
 
 namespace Sound.Core;
@@ -22,12 +20,11 @@ public struct WaveOutWrapper
             deviceId, format.WaveFormat, format.Callback, dwInstance, format.Flags));
     }
 
-    public void PrepareHeader(WaveWriteRequest req)
+    public void PrepareHeader(WaveHeader header)
     {        
         MmResult result;
         try
         {
-            var header = req.GetHeader();
             result = Wave.waveOutPrepareHeader(_currentWaveOutHandle, 
                 header, MarshalExtensions.SizeOf<WaveHeader>());
         }
@@ -37,13 +34,13 @@ public struct WaveOutWrapper
         }
         Validate(result);
     }
-    public void UnprepareHeader(WaveWriteRequest req)
+    public void UnprepareHeader(WaveHeader header)
     {        
         MmResult result;
         try
         {
             result = Wave.waveOutUnprepareHeader(_currentWaveOutHandle, 
-                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+                header, MarshalExtensions.SizeOf<WaveHeader>());
         }
         catch (Exception ex)
         {
@@ -65,14 +62,14 @@ public struct WaveOutWrapper
         Validate(result);
     }
 
-    public void Write(WaveWriteRequest req)
+    public void Write(WaveHeader req)
     {
         MmResult result;
         try
         {
             result = Wave.waveOutWrite(
                 _currentWaveOutHandle, 
-                req.GetHeader(), MarshalExtensions.SizeOf<WaveHeader>());
+                req, MarshalExtensions.SizeOf<WaveHeader>());
         }
         catch (Exception ex)
         {

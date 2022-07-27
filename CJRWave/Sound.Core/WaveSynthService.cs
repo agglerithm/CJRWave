@@ -1,3 +1,4 @@
+using System.Text;
 using BufferUtilities;
 using Sound.Core.Models;
 using Sound.Core.WaveInterop;
@@ -40,7 +41,6 @@ public class WaveSynthService : IWaveService<double>
         {
             _headers[i] = new WaveHeader { bufferLength = (int)config.BlockSamples * 4 };
         }
-
         _log = config.Log;
         _configuration = config;
     }
@@ -49,7 +49,6 @@ public class WaveSynthService : IWaveService<double>
     private uint _blockFree;
     private Thread _thread;
     private readonly AutoResetEvent _resetEvent = new(false);
-    private static Mutex _mutex = new();
     private WaveHeader[] _headers;
     private FormatRequest _format;
     private double _globalTime;
@@ -84,8 +83,10 @@ public class WaveSynthService : IWaveService<double>
     private void callback(IntPtr hwaveout, Wave.WaveMessage message, IntPtr dwinstance, 
         WaveHeader wavhdr, IntPtr dwreserved)
     {
+        LogValue(_blockCurrent);
         if (message != Wave.WaveMessage.WaveOutDone) return;
-
+        if (_resetEvent.SafeWaitHandle.IsClosed)
+            return;
         _blockFree++;
         _resetEvent.Set();
     }
@@ -100,17 +101,12 @@ public class WaveSynthService : IWaveService<double>
                 _resetEvent.WaitOne();
             _blockFree--;
             if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
-                _wavStruct.UnprepareHeader(new WaveWriteRequest()
-                    {Flags=WaveHeaderFlags.Prepared});
+                _wavStruct.UnprepareHeader(_headers[_blockCurrent]);
             var dataBuff = GetDataBuff(timeStep);
-            _headers[_blockCurrent].userData = dataBuff.PtrFromByteArray();
-            var request = new WaveWriteRequest()
-            {
-                Data = dataBuff,
-                Flags = WaveHeaderFlags.Prepared
-            };
-            _wavStruct.PrepareHeader(request);
-            _wavStruct.Write(request);
+            //_headers[_blockCurrent].userData = dataBuff.PtrFromByteArray();
+            _headers[_blockCurrent].dataBuffer = dataBuff.PtrFromByteArray();
+            _wavStruct.PrepareHeader(_headers[_blockCurrent]);
+            _wavStruct.Write(_headers[_blockCurrent]);
             _blockCurrent++;
             _blockCurrent %= _configuration.BlockCount;
         }
@@ -124,7 +120,7 @@ public class WaveSynthService : IWaveService<double>
             var initialValue = _userFunction(_globalTime);
             var clipped = clipSample(initialValue, 1);
             var nextSample = (int)(clipped * _maxSample);
-            LogValue(nextSample);
+            //LogValue(nextSample);
             bb.Append(nextSample);
             _globalTime += timeStep;
         }

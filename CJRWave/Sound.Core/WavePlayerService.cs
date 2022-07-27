@@ -48,7 +48,7 @@ public class WavePlayerService : IWavePlayerService
 
     private int _blockFree;
     
-    private readonly ManualResetEventSlim _resetEvent = new(false);
+    private readonly AutoResetEvent _resetEvent = new(false);
     private WaveHeader[] _headers;
     private FormatRequest Format
     {
@@ -81,15 +81,17 @@ public class WavePlayerService : IWavePlayerService
     }
     
 
-    private void Callback(IntPtr hwaveout, Wave.WaveMessage message, IntPtr dwinstance, WaveHeader wavhdr, IntPtr dwreserved)
+    private void Callback(IntPtr hwaveout, Wave.WaveMessage message, IntPtr dwinstance, 
+        WaveHeader wavhdr, IntPtr dwreserved)
     {
+        LogValue($"Setting:{_blockCurrent}");
         if (message != Wave.WaveMessage.WaveOutDone)
         {
             return;
         }
-
+        if (_resetEvent.SafeWaitHandle.IsClosed)
+            return;
         _blockFree++;
-        LogValue($"Setting:{_blockFree}");
         _resetEvent.Set();
     }
     public void Play()
@@ -101,21 +103,16 @@ public class WavePlayerService : IWavePlayerService
         {
             Debug.Assert(_blockFree >= 0, "Number of blocks should not be less than zero");
             if (_blockFree == 0)
-                _resetEvent.Wait();
+                _resetEvent.WaitOne();
             _blockFree--;
             if(_headers[_blockCurrent].flags == WaveHeaderFlags.Prepared)
-                _wavStruct.UnprepareHeader(new WaveWriteRequest()
-                    {Flags=WaveHeaderFlags.Prepared});
+                _wavStruct.UnprepareHeader(_headers[_blockCurrent]);
             var dataBuff = GetBlockData(timeStep);
 
-            _headers[_blockCurrent].userData = dataBuff.PtrFromByteArray();
-            var request = new WaveWriteRequest()
-            {
-                Data = dataBuff,
-                Flags = WaveHeaderFlags.Prepared
-            };
-            _wavStruct.PrepareHeader(request);
-            _wavStruct.Write(request);
+            _headers[_blockCurrent].dataBuffer = dataBuff.PtrFromByteArray();
+
+            _wavStruct.PrepareHeader(_headers[_blockCurrent]);
+            _wavStruct.Write(_headers[_blockCurrent]);
             _blockCurrent++;
             _blockCurrent %= BlockCount;
             if (_currentByte == FileSize)

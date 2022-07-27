@@ -4,6 +4,8 @@ public class SoundSpectrum
 {
     private const int MAX_FREQUENCIES = 10;
     private int _count;
+    private int _lastCount;
+    private IEnumerable<double> _currentFrequencies;
     private double[] _frequencies = new double[MAX_FREQUENCIES];
 
     public SoundSpectrum(double initial = 0)
@@ -20,6 +22,11 @@ public class SoundSpectrum
 
     public double GetImpulse(double time, double amplitude)
     {
-        return _frequencies.Take(_count).Sum(f => time.GetSine(f)) * amplitude;
+        if (_count > _lastCount)
+        {
+            _currentFrequencies = _frequencies.Take(_count);
+            _lastCount = _count;
+        }
+        return _currentFrequencies.Sum(f => time.GetSine(f)) * amplitude;
     }
 }
