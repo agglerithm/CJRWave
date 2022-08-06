@@ -5,18 +5,19 @@ public class SoundSpectrum
     private const int MAX_FREQUENCIES = 10;
     private int _count;
     private int _lastCount;
-    private IEnumerable<double> _currentFrequencies;
-    private double[] _frequencies = new double[MAX_FREQUENCIES];
+    private IEnumerable<Tuple<double,double>> _currentFrequencies;
+    private readonly Tuple<double,double>[] _frequencies = new Tuple<double,double>[MAX_FREQUENCIES];
 
-    public SoundSpectrum(double initial = 0)
+    public SoundSpectrum(double initialFreq = 0, double initialAmp = 0)
     {
-        Add(initial);
+        if (initialFreq == 0) return;
+        Add(initialFreq, initialAmp);
     }
-    public void Add(double freq)
+    public void Add(double freq, double amp = 1)
     {
-        if (freq <= 0.0)
+        if (freq == 0.0)
             return;
-        _frequencies[_count] = freq;
+        _frequencies[_count] = new Tuple<double, double>(freq, amp);
         _count++;
     }
 
@@ -27,6 +28,6 @@ public class SoundSpectrum
             _currentFrequencies = _frequencies.Take(_count);
             _lastCount = _count;
         }
-        return _currentFrequencies.Sum(f => time.GetSine(f)) * amplitude;
+        return _currentFrequencies.Sum(f => time.SineWave(f.Item2,f.Item1)) * amplitude + amplitude;
     }
 }

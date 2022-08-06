@@ -29,9 +29,9 @@ public class WaveServiceTests
         _sut.Start();
         var counter = 0.0;
         _frequency = 400.0;
-        _spectrum.Add(_frequency * 2);
-        _spectrum.Add(_frequency * 3);
-        _spectrum.Add(_frequency * 4);
+        _spectrum.Add(_frequency * 2,2);
+        _spectrum.Add(_frequency * 3,.7);
+        _spectrum.Add(_frequency * 4,1.5);
         while (counter < 1.0)
         {
             counter = _sut.GetTime();
@@ -48,7 +48,7 @@ public class WaveServiceTests
         {
             counter = _sut.GetTime();
         }
-        _spectrum.Add(_frequency * 1.5);
+        _spectrum.Add(_frequency * 1.5,3);
         while (counter < 5.0)
         {
             counter = _sut.GetTime();
@@ -58,7 +58,7 @@ public class WaveServiceTests
 
     private double PlayNote(double arg)
     {
-        var val = _spectrum.GetImpulse(arg, 3);
+        var val = _spectrum.GetImpulse(arg, 1);
         //, _frequency * 1.5);
         return val;
     }
@@ -90,6 +90,6 @@ public class WaveServiceTests
 
     private double PlaySineWave(double arg)
     {
-        return arg.SineWave(5,_frequency);
+        return arg.SineWave(1,_frequency);
     }
 }

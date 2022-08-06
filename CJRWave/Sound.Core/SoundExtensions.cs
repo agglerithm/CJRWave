@@ -10,7 +10,7 @@ namespace Sound.Core
         }
         public static double SineWave(this double timeElapsed, double amplitude, double frequency)
         {
-            return timeElapsed.GetSine(frequency) * amplitude;
+            return timeElapsed.GetSine(frequency) * amplitude + amplitude;
         }
 
         public static double SquareWave(this double timeElapsed, double amplitude, double frequency)
