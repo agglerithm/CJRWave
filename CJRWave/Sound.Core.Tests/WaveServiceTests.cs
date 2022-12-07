@@ -66,7 +66,7 @@ public class WaveServiceTests
     [Test]
     public  void CanRunServiceWithSineWave()
     {
-        var baseFreq = 400.00;
+        var baseFreq = 800.00;
         var config = new WaveSynthServiceConfiguration()
         {
             Channels = 1,
@@ -81,8 +81,22 @@ public class WaveServiceTests
         _sut.Start();
         var counter = 0.0;
         _frequency = baseFreq;
-        while (counter < 1.0)
+        while (counter < .5)
         {
+            Thread.Sleep(200);
+            counter = _sut.GetTime();
+        }
+
+        _frequency *= 1.5;
+        while (counter < 1)
+        {
+            Thread.Sleep(200);
+            counter = _sut.GetTime();
+        }
+        _frequency *= 1.5;
+        while (counter < 1.5)
+        {
+            Thread.Sleep(200);
             counter = _sut.GetTime();
         }
         _sut.End(); 
