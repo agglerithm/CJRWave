@@ -1,5 +1,6 @@
 
 
+using System.Diagnostics.Metrics;
 using Sound.Core.Models;
 using Sound.Core.WaveInterop;
 
@@ -18,8 +19,8 @@ public class WaveServiceTests
         var config = new WaveSynthServiceConfiguration()
         {
             Channels = 1,
-            BlockCount = 1,
-            BlockSamples = 512,
+            BlockCount = 8,
+            BlockSamples = 256,
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlayNote, 
             SampleRate = 44100,
@@ -70,25 +71,64 @@ public class WaveServiceTests
         var config = new WaveSynthServiceConfiguration()
         {
             Channels = 1,
-            BlockCount = 1,
-            BlockSamples = 512,
+            BlockCount = 8,
+            BlockSamples = 256,
             Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
             UserFunction = PlaySineWave, 
             SampleRate = 44100,
             Log = Console.WriteLine
         };
+        Play(config, baseFreq);
+
+    }
+    [Test]
+    public void CanRunServiceWithTriangleWave()
+    {
+        var baseFreq = 800.00;
+        var config = new WaveSynthServiceConfiguration()
+        {
+            Channels = 1,
+            BlockCount = 8,
+            BlockSamples = 256,
+            Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
+            UserFunction = PlayTriangleWave,
+            SampleRate = 44100,
+            Log = Console.WriteLine
+        };
+        Play(config, baseFreq);
+
+    }
+    [Test]
+    public void CanRunServiceWithSquareWave()
+    {
+        var baseFreq = 800.00;
+        var config = new WaveSynthServiceConfiguration()
+        {
+            Channels = 1,
+            BlockCount = 8,
+            BlockSamples = 256,
+            Flags = Wave.WaveInOutOpenFlags.CallbackFunction,
+            UserFunction = PlaySquareWave,
+            SampleRate = 44100,
+            Log = Console.WriteLine
+        };
+        Play(config, baseFreq);
+
+    }
+    private void Play(WaveSynthServiceConfiguration config, double baseFreq)
+    {
         _sut = new WaveSynthService(config);
         _sut.Start();
         var counter = 0.0;
         _frequency = baseFreq;
-        while (counter < .5)
+        while (counter< .5)
         {
             Thread.Sleep(200);
             counter = _sut.GetTime();
         }
 
         _frequency *= 1.5;
-        while (counter < 1)
+        while (counter< 1)
         {
             Thread.Sleep(200);
             counter = _sut.GetTime();
@@ -99,11 +139,17 @@ public class WaveServiceTests
             Thread.Sleep(200);
             counter = _sut.GetTime();
         }
-        _sut.End(); 
-    }
-
+        _sut.End();  }
     private double PlaySineWave(double arg)
     {
         return arg.SineWave(1,_frequency);
+    }
+    private double PlayTriangleWave(double arg)
+    {
+        return arg.TriangleWave(2, _frequency);
+    }
+    private double PlaySquareWave(double arg)
+    {
+        return arg.SquareWave(2, _frequency);
     }
 }

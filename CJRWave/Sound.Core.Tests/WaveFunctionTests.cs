@@ -18,7 +18,19 @@ public class WaveFunctionTests
             Console.WriteLine($"{smallTimeSpanWave}:{smallTimeSpanWave * max}");
         }
     }
-    
+    [Test]
+    public void CanGetAlienWave()
+    {
+        double j = 0;
+        double timespan = .0001;
+        short max = short.MaxValue;
+        for (double i = 0; i < 1000; i++)
+        {
+            var smallTimeSpanWave = j.Aliens(.5, 440);
+            j += timespan;
+            Console.WriteLine($"{smallTimeSpanWave}:{smallTimeSpanWave * max}");
+        }
+    }
     [Test]
     public void CanGetSquareWave()
     {

@@ -1,5 +1,6 @@
 using CJRWave;
 using NUnit.Framework;
+using static System.Net.WebRequestMethods;
 
 namespace Sound.Core.Tests;
 
@@ -11,7 +12,6 @@ public class WavFileTests
     [Test]
     public void CanPlayWavFile()
     {
-        _file = new WAVFile();
-        _file.Read("dance.wav");
+        new WaveFilePlayer(new WavePlayerService(s => Console.WriteLine(s))).Play("Chaconne.wav");
     }
 }
