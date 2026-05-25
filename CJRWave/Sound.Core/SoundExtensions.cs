@@ -22,8 +22,17 @@ namespace Sound.Core
         }
         public static double TriangleWave(this double timeElapsed, double amplitude, double frequency)
         {
-            return Math.Asin(timeElapsed.SineWave(frequency,amplitude)) * 2.0 / PI;
+             var sine =   timeElapsed.SineWave(amplitude, frequency);
+            var num = Math.Asin(sine);
+            return num * 2.0 / PI;
         }
+        public static double SawtoothWave(this double timeElapsed, double amplitude, double frequency, double custom = 50)
+        {
+            double output = 0.0;
+            for (double n = 1.0; n < custom; n++)
+                output += (Math.Sin(n * frequency.AngularVelocity())) / n;
+            return output * (2.0 / PI);
+        }   
         public static double Chord(this double timeElapsed, double amplitude, params double[] frequencies)
         {
             var sum = frequencies.Where(f => f != 0).Sum(f => timeElapsed.GetSine(f));

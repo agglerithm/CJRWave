@@ -50,9 +50,6 @@ namespace Sound.Core
             return amplitude;
         }
 
-        public static double Env(double time, Envelope env, double timeOn, double timeOff)
-        {
-            return env.Amplitude(time, timeOn, timeOff);
-        }
+
     }
 }

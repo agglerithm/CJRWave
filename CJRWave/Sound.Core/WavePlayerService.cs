@@ -72,6 +72,10 @@ public class WavePlayerService : IWavePlayerService
         get;
         set;
     }
+    private void TryLog(object obj)
+    {
+        Log?.Invoke(obj);
+    }
     private WavePlayerConfiguration _configuration;
     private FormatRequest? _format;
 
@@ -99,6 +103,7 @@ public class WavePlayerService : IWavePlayerService
         _wavStruct.Open(Format);
         _globalTime = 0.0;
         var timeStep = 1.0 / SampleRate;
+        TryLog("File size in bytes: " + FileSize);
         while (_ready)
         {
             Debug.Assert(_blockFree >= 0, "Number of blocks should not be less than zero");
@@ -115,6 +120,7 @@ public class WavePlayerService : IWavePlayerService
             _wavStruct.Write(_headers[_blockCurrent]);
             _blockCurrent++;
             _blockCurrent %= BlockCount;
+            TryLog("Current byte: " + _currentByte);
             if (_currentByte == FileSize)
                 _ready = false;
         }
